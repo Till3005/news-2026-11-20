@@ -50,7 +50,11 @@ crisp "pixel-editorial" look — everything sits on a strict integer-pixel grid.
    BRENT CRUDE $58.10 (descending sparkline), NIKKEI 225 51,204 (ascending
    sparkline), GAZA AID 120 (bar chart, final bar crimson), PERTH HEAT 41.2C
    (thermometer pegged high beside a sun), EU GAS STORES 88% (donut gauge,
-   crimson sweep from 12 o'clock) — with blue source lines beneath.
+   crimson sweep from 12 o'clock) — with blue source lines beneath. Below the
+   OPINION card, bottom-aligned with the panel, sits a **WEATHER micro-panel**:
+   a new sun-behind-cloud pictogram (crimson sun peeking from a puffy ink
+   cloud) beside a crimson WEATHER tag and one 1× line of Friday readings —
+   ROME 18C * LONDON 7C * SYDNEY 41C (Sydney echoes the Perth heat story).
 5. **Ticker strip** — solid ink band with a paper-colored hippo silhouette
    (the paper's mascot) and four 1× bulletin items separated by asterisks
    (Anthropic day-two, Dhaka curfew, the Booker Prize, the Pete Rose

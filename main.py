@@ -409,13 +409,24 @@ def viz_donut(zx, zy, zw, zh):
     arc(cx, cy, 10, -math.pi / 2, -math.pi / 2 + 0.88 * 2 * math.pi, CRIMSON, 4)
 
 
+def pico_cloudsun(x, y):
+    """Sun peeking behind a puffy ink cloud (weather micro-panel)."""
+    disc(x + 30, y + 6, 4, CRIMSON)                      # sun behind
+    line(x + 35, y + 6, x + 38, y + 6, CRIMSON, 1)       # ray
+    line(x + 30, y + 0, x + 30, y + 2, CRIMSON, 1)       # ray
+    disc(x + 12, y + 10, 5, INK)                         # cloud puffs
+    disc(x + 19, y + 7, 6, INK)
+    disc(x + 26, y + 10, 5, INK)
+    rect(x + 12, y + 10, 20, 5, INK)                     # cloud base
+
+
 def stat_box(x, y, label, number, sub, viz):
     """One boxed figure: crimson label, 3x number, mini chart, blue source line."""
-    outline_rect(x, y, 118, 92, INK, 1)
-    draw_text(x + 6, y + 7, label, 1, CRIMSON)
-    draw_text(x + 6, y + 22, number, 3, INK)
-    viz(x + 6, y + 50, 106, 20)
-    draw_text(x + 6, y + 78, sub, 1, BLUE)
+    outline_rect(x, y, 118, 110, INK, 1)
+    draw_text(x + 6, y + 8, label, 1, CRIMSON)
+    draw_text(x + 6, y + 26, number, 3, INK)
+    viz(x + 6, y + 56, 106, 20)
+    draw_text(x + 6, y + 92, sub, 1, BLUE)
 
 
 def pico_hippo(x, y, c, bg):
@@ -530,9 +541,9 @@ def build():
          ["THE SHENZHEN FOUR POINTS PRICE THE OIL,", "NOT THE PEOPLE. EUROPE SHOULD NOT CO-SIGN."],
          pico_quill, "ESSAY P.11")
 
-    outline_rect(352, 750, 648, 140, INK, 1)
-    draw_text(364, 760, "BY THE NUMBERS", 2, CRIMSON)
-    rect(364, 778, text_w("BY THE NUMBERS", 2), 2, CRIMSON)
+    outline_rect(352, 750, 648, 166, INK, 1)
+    draw_text(364, 762, "BY THE NUMBERS", 2, CRIMSON)
+    rect(364, 780, text_w("BY THE NUMBERS", 2), 2, CRIMSON)
     stats = [
         (364, "BRENT CRUDE", "$58.10", "OFF $4 ON PACT", viz_down),
         (490, "NIKKEI 225", "51,204", "UP 1.2% ON PACT", viz_up),
@@ -541,21 +552,27 @@ def build():
         (868, "EU GAS STORES", "88%", "FULL FOR WINTER", viz_donut),
     ]
     for bx, label, number, sub, viz in stats:
-        stat_box(bx, 786, label, number, sub, viz)
+        stat_box(bx, 790, label, number, sub, viz)
+
+    # ---- Weather micro-panel --------------------------------------------
+    outline_rect(24, 896, 320, 20, INK, 1)
+    pico_cloudsun(36, 898)
+    draw_text(86, 903, "WEATHER", 1, CRIMSON)
+    draw_text(138, 903, "ROME 18C * LONDON 7C * SYDNEY 41C", 1, INK)
 
     # ---- Footer ticker --------------------------------------------------
-    rect(24, 898, 976, 2, INK)
-    rect(24, 904, 976, 44, INK)
-    pico_hippo(36, 911, PAPER, INK)
-    draw_text(96, 922,
+    rect(24, 924, 976, 2, INK)
+    rect(24, 930, 976, 44, INK)
+    pico_hippo(36, 937, PAPER, INK)
+    draw_text(96, 948,
               "ANTHROPIC CLOSES $93.05 ON DAY TWO * DHAKA QUIET UNDER CURFEW "
               "* BOOKER WON BY LAGOS-BORN DEBUT * HALL OF FAME REVISITS ROSE BAN",
               1, PAPER)
 
     # ---- Folio ----------------------------------------------------------
-    center_text(958, "PAGE 01 - THE WORLD DAILY - FRIDAY, 20 NOVEMBER 2026", 1, INK)
-    rect(24, 972, 976, 2, INK)
-    rect(24, 977, 976, 1, INK)
+    center_text(984, "PAGE 01 - THE WORLD DAILY - FRIDAY, 20 NOVEMBER 2026", 1, INK)
+    rect(24, 998, 976, 2, INK)
+    rect(24, 1003, 976, 1, INK)
 
 
 # --------------------------------------------------------------------------
