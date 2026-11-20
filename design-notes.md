@@ -26,9 +26,11 @@ crisp "pixel-editorial" look — everything sits on a strict integer-pixel grid.
 ## Layout (top → bottom)
 
 1. **Masthead band** — hairline rule; folio row ("VOL. LXXXII - NO. 324",
+   a centered "INSIDE: GAZA P.4 * COP31 P.7 * ESSAY P.11" index line, and
    "( PRICE: ONE IMAGE )"); "THE WORLD DAILY" at 7× scale centered; the date
-   "FRIDAY, 20 NOVEMBER 2026" in crimson at 3× (the page names its day twice —
-   also in the bottom folio); thick-over-thin newspaper rules.
+   "FRIDAY, 20 NOVEMBER 2026" in crimson at 3×, flanked by two hand-plotted
+   fleurons (crimson diamond between ink curls and dots); the page names its
+   day twice — also in the bottom folio; thick-over-thin newspaper rules.
 2. **Lead story** — crimson kicker (summit fall-out), two 3× headline lines
    (oil plunge on the pact's oil clause; EU calls a Sunday summit), two 2× dek
    lines (Brent sinks $4 to $58.10; Kyiv's "map for Russia" jibe), a blue 1×

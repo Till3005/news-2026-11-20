@@ -445,6 +445,17 @@ def pico_hippo(x, y, c, bg):
     rect(x + 31, y + 6, 2, 2, bg)
 
 
+def pico_fleuron(x, y):
+    """Newspaper fleuron: crimson diamond between ink curls and dots."""
+    cx, cy = x + 27, y + 7
+    for i, wd in enumerate((2, 6, 10, 14, 10, 6, 2)):
+        rect(cx - wd // 2, y + i * 2, wd, 2, CRIMSON)
+    line(cx - 25, cy, cx - 10, cy, INK, 1)
+    line(cx + 10, cy, cx + 25, cy, INK, 1)
+    disc(cx - 27, cy, 1, INK)
+    disc(cx + 27, cy, 1, INK)
+
+
 # --------------------------------------------------------------------------
 # Page layout
 # --------------------------------------------------------------------------
@@ -474,8 +485,11 @@ def build():
     rect(24, 14, 976, 1, INK)
     draw_text(24, 22, "VOL. LXXXII - NO. 324", 1, INK)
     right_text(1000, 22, "( PRICE: ONE IMAGE )", 1, INK)
+    center_text(22, "INSIDE: GAZA P.4 * COP31 P.7 * ESSAY P.11", 1, INK)
     center_text(40, "THE WORLD DAILY", 7, INK)
     center_text(100, "FRIDAY, 20 NOVEMBER 2026", 3, CRIMSON)
+    pico_fleuron(231, 103)
+    pico_fleuron(735, 103)
     rect(24, 132, 976, 2, INK)
     rect(24, 137, 976, 1, INK)
 
