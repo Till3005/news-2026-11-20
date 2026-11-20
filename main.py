@@ -402,13 +402,20 @@ def viz_temp(zx, zy, zw, zh):
              INK, 1)
 
 
+def viz_donut(zx, zy, zw, zh):
+    """Storage gauge: ink donut with a crimson fill sweep from 12 o'clock."""
+    cx, cy = zx + 15, zy + 10
+    ring(cx, cy, 10, INK, 2)
+    arc(cx, cy, 10, -math.pi / 2, -math.pi / 2 + 0.88 * 2 * math.pi, CRIMSON, 4)
+
+
 def stat_box(x, y, label, number, sub, viz):
     """One boxed figure: crimson label, 3x number, mini chart, blue source line."""
-    outline_rect(x, y, 148, 92, INK, 1)
-    draw_text(x + 8, y + 7, label, 1, CRIMSON)
-    draw_text(x + 8, y + 22, number, 3, INK)
-    viz(x + 8, y + 50, 132, 20)
-    draw_text(x + 8, y + 78, sub, 1, BLUE)
+    outline_rect(x, y, 118, 92, INK, 1)
+    draw_text(x + 6, y + 7, label, 1, CRIMSON)
+    draw_text(x + 6, y + 22, number, 3, INK)
+    viz(x + 6, y + 50, 106, 20)
+    draw_text(x + 6, y + 78, sub, 1, BLUE)
 
 
 def pico_hippo(x, y, c, bg):
@@ -527,10 +534,11 @@ def build():
     draw_text(364, 760, "BY THE NUMBERS", 2, CRIMSON)
     rect(364, 778, text_w("BY THE NUMBERS", 2), 2, CRIMSON)
     stats = [
-        (364, "BRENT CRUDE", "$58.10", "OFF $4 ON OIL CLAUSE", viz_down),
-        (522, "NIKKEI 225", "51,204", "UP 1.2% ON THE PACT", viz_up),
-        (680, "GAZA AID", "120", "IN VIA KEREM SHALOM", viz_bars),
-        (838, "PERTH HEAT", "41.2C", "RECORD NOVEMBER NIGHT", viz_temp),
+        (364, "BRENT CRUDE", "$58.10", "OFF $4 ON PACT", viz_down),
+        (490, "NIKKEI 225", "51,204", "UP 1.2% ON PACT", viz_up),
+        (616, "GAZA AID", "120", "VIA KEREM SHALOM", viz_bars),
+        (742, "PERTH HEAT", "41.2C", "RECORD NOV NIGHT", viz_temp),
+        (868, "EU GAS STORES", "88%", "FULL FOR WINTER", viz_donut),
     ]
     for bx, label, number, sub, viz in stats:
         stat_box(bx, 786, label, number, sub, viz)

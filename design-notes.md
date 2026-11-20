@@ -46,10 +46,11 @@ crisp "pixel-editorial" look — everything sits on a strict integer-pixel grid.
 4. **Bottom band** — a tenth, full-height card on the left: OPINION (quill pen
    with crimson ink drop — an essay against co-signing the Shenzhen pact,
    tagged "ESSAY P.11"). On the right, a **BY THE NUMBERS** panel: crimson
-   header over four 148×92 boxed figures, each with a hand-plotted mini chart —
+   header over five 118×92 boxed figures, each with a hand-plotted mini chart —
    BRENT CRUDE $58.10 (descending sparkline), NIKKEI 225 51,204 (ascending
    sparkline), GAZA AID 120 (bar chart, final bar crimson), PERTH HEAT 41.2C
-   (thermometer pegged high beside a sun) — with blue source lines beneath.
+   (thermometer pegged high beside a sun), EU GAS STORES 88% (donut gauge,
+   crimson sweep from 12 o'clock) — with blue source lines beneath.
 5. **Ticker strip** — solid ink band with a paper-colored hippo silhouette
    (the paper's mascot) and four 1× bulletin items separated by asterisks
    (Anthropic day-two, Dhaka curfew, the Booker Prize, the Pete Rose
