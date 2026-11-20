@@ -325,6 +325,92 @@ def pico_chat(x, y):
     disc(x + 30, y + 19, 2, CRIMSON)
 
 
+def pico_quill(x, y):
+    """Quill pen with an ink drop (opinion essay)."""
+    line(x + 12, y + 34, x + 30, y + 8, INK, 2)          # spine
+    line(x + 30, y + 8, x + 12, y + 14, INK, 1)          # upper edge
+    line(x + 12, y + 14, x + 12, y + 34, INK, 1)         # lower edge
+    line(x + 19, y + 25, x + 15, y + 17, INK, 1)         # barb
+    line(x + 25, y + 17, x + 19, y + 14, INK, 1)         # barb
+    line(x + 12, y + 34, x + 7, y + 39, INK, 2)          # nib
+    disc(x + 6, y + 40, 2, CRIMSON)                      # ink drop
+
+
+# --------------------------------------------------------------------------
+# By-the-numbers strip (mini charts for the stat boxes)
+# --------------------------------------------------------------------------
+
+def sparkline(x, y, w, h, vals, c):
+    """Polyline of `vals` across an (x, y, w, h) zone, dot on the last point."""
+    n = len(vals)
+    lo, hi = min(vals), max(vals)
+    rng = (hi - lo) or 1
+    prev = None
+    last = None
+    for i, v in enumerate(vals):
+        sx = x + int(round(i * w / (n - 1)))
+        sy = y + (h - 2) - int(round((v - lo) * (h - 4) / rng))
+        if prev:
+            line(prev[0], prev[1], sx, sy, c, 2)
+        prev = (sx, sy)
+        last = (sx, sy)
+    disc(last[0], last[1], 2, c)
+
+
+def minibars(x, y, w, h, vals, c, last_c=None):
+    """Tiny bar chart; optionally crimson-highlight the final bar."""
+    n = len(vals)
+    step = w / n
+    bw = max(3, int(step) - 3)
+    peak = max(vals) or 1
+    for i, v in enumerate(vals):
+        bh = max(2, int(round(v * h / peak)))
+        col = last_c if (last_c and i == n - 1) else c
+        rect(x + int(round(i * step)), y + h - bh, bw, bh, col)
+
+
+def viz_down(zx, zy, zw, zh):
+    """Brent crude sliding through the week."""
+    sparkline(zx, zy, zw - 8, zh, [64.8, 64.1, 64.6, 63.0, 61.9, 58.1], CRIMSON)
+
+
+def viz_up(zx, zy, zw, zh):
+    """Nikkei firming on the pact."""
+    sparkline(zx, zy, zw - 8, zh, [50388, 50512, 50440, 50776, 50901, 51204], CRIMSON)
+
+
+def viz_bars(zx, zy, zw, zh):
+    """Daily Gaza aid trucks building to 120."""
+    minibars(zx, zy, zw, zh, [40, 64, 88, 104, 120], INK, CRIMSON)
+
+
+def viz_temp(zx, zy, zw, zh):
+    """Record heat: thermometer pegged high beside a blazing sun."""
+    tx = zx + 6
+    rect(tx, zy, 5, 14, INK)                     # tube
+    rect(tx + 1, zy + 3, 3, 14, CRIMSON)         # mercury
+    disc(tx + 2, zy + 18, 6, INK)                # bulb shell
+    disc(tx + 2, zy + 18, 4, CRIMSON)            # bulb fill
+    for k in range(3):
+        rect(tx + 7, zy + 2 + k * 5, 5, 1, INK)  # scale ticks
+    sx, sy = zx + 40, zy + 8
+    disc(sx, sy, 6, CRIMSON)                     # sun
+    for k in range(4):
+        a = k * math.pi / 2 + 0.4
+        line(sx + int(round(8 * math.cos(a))), sy + int(round(8 * math.sin(a))),
+             sx + int(round(12 * math.cos(a))), sy + int(round(12 * math.sin(a))),
+             INK, 1)
+
+
+def stat_box(x, y, label, number, sub, viz):
+    """One boxed figure: crimson label, 3x number, mini chart, blue source line."""
+    outline_rect(x, y, 148, 92, INK, 1)
+    draw_text(x + 8, y + 7, label, 1, CRIMSON)
+    draw_text(x + 8, y + 22, number, 3, INK)
+    viz(x + 8, y + 50, 132, 20)
+    draw_text(x + 8, y + 78, sub, 1, BLUE)
+
+
 def pico_hippo(x, y, c, bg):
     """Fiona the hippo, in silhouette, for the ticker strip."""
     rect(x + 2, y + 8, 26, 14, c)
@@ -346,21 +432,21 @@ def pico_hippo(x, y, c, bg):
 # --------------------------------------------------------------------------
 
 def card(x, y, kicker, head_lines, dek_lines, pico, page_tag):
-    outline_rect(x, y, 320, 170, INK, 1)
-    draw_text(x + 12, y + 12, kicker, 1, CRIMSON)
-    rect(x + 12, y + 22, text_w(kicker, 1), 2, CRIMSON)
-    pico(x + 12, y + 32)
-    yy = y + 34
+    outline_rect(x, y, 320, 140, INK, 1)
+    draw_text(x + 12, y + 10, kicker, 1, CRIMSON)
+    rect(x + 12, y + 20, text_w(kicker, 1), 2, CRIMSON)
+    pico(x + 12, y + 24)
+    yy = y + 26
     for ln in head_lines:
         draw_text(x + 66, yy, ln, 2, INK)
         yy += 15
     for rx in range(x + 12, x + 308, 6):          # dotted hairline above dek
-        rect(rx, y + 88, 3, 1, INK)
-    yy = y + 96
+        rect(rx, y + 76, 3, 1, INK)
+    yy = y + 82
     for ln in dek_lines:
         draw_text(x + 12, yy, ln, 1, BLUE)
         yy += 11
-    draw_text(x + 308 - text_w(page_tag, 1), y + 152, page_tag, 1, BLUE)
+    draw_text(x + 308 - text_w(page_tag, 1), y + 122, page_tag, 1, BLUE)
 
 
 def build():
@@ -427,23 +513,41 @@ def build():
          pico_chat, "FULL REPORT P.10"),
     ]
     xs = (24, 352, 680)
-    ys = (306, 486, 666)
+    ys = (306, 454, 602)
     for i, (k, hl, dl, p, pt) in enumerate(cards):
         card(xs[i % 3], ys[i // 3], k, hl, dl, p, pt)
 
+    # ---- Tenth card + BY THE NUMBERS band -------------------------------
+    card(24, 750, "OPINION",
+         ["A PACT THAT LEAVES", "KYIV OUT IS NOT", "A PEACE DEAL"],
+         ["THE SHENZHEN FOUR POINTS PRICE THE OIL,", "NOT THE PEOPLE. EUROPE SHOULD NOT CO-SIGN."],
+         pico_quill, "ESSAY P.11")
+
+    outline_rect(352, 750, 648, 140, INK, 1)
+    draw_text(364, 760, "BY THE NUMBERS", 2, CRIMSON)
+    rect(364, 778, text_w("BY THE NUMBERS", 2), 2, CRIMSON)
+    stats = [
+        (364, "BRENT CRUDE", "$58.10", "OFF $4 ON OIL CLAUSE", viz_down),
+        (522, "NIKKEI 225", "51,204", "UP 1.2% ON THE PACT", viz_up),
+        (680, "GAZA AID", "120", "IN VIA KEREM SHALOM", viz_bars),
+        (838, "PERTH HEAT", "41.2C", "RECORD NOVEMBER NIGHT", viz_temp),
+    ]
+    for bx, label, number, sub, viz in stats:
+        stat_box(bx, 786, label, number, sub, viz)
+
     # ---- Footer ticker --------------------------------------------------
-    rect(24, 848, 976, 2, INK)
-    rect(24, 858, 976, 54, INK)
-    pico_hippo(36, 870, PAPER, INK)
-    draw_text(96, 881,
+    rect(24, 898, 976, 2, INK)
+    rect(24, 904, 976, 44, INK)
+    pico_hippo(36, 911, PAPER, INK)
+    draw_text(96, 922,
               "ANTHROPIC CLOSES $93.05 ON DAY TWO * DHAKA QUIET UNDER CURFEW "
               "* BOOKER WON BY LAGOS-BORN DEBUT * HALL OF FAME REVISITS ROSE BAN",
               1, PAPER)
 
     # ---- Folio ----------------------------------------------------------
-    center_text(924, "PAGE 01 - THE WORLD DAILY - FRIDAY, 20 NOVEMBER 2026", 1, INK)
-    rect(24, 940, 976, 2, INK)
-    rect(24, 945, 976, 1, INK)
+    center_text(958, "PAGE 01 - THE WORLD DAILY - FRIDAY, 20 NOVEMBER 2026", 1, INK)
+    rect(24, 972, 976, 2, INK)
+    rect(24, 977, 976, 1, INK)
 
 
 # --------------------------------------------------------------------------

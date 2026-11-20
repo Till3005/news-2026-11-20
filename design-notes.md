@@ -34,7 +34,7 @@ crisp "pixel-editorial" look — everything sits on a strict integer-pixel grid.
    lines (Brent sinks $4 to $58.10; Kyiv's "map for Russia" jibe), a blue 1×
    summary strip, and a column rule separating text from the pictogram: an oil
    barrel with a crimson falling arrow.
-3. **Story grid (3×3)** — bordered 320×170 cards: crimson kicker with underline,
+3. **Story grid (3×3)** — bordered 320×140 cards: crimson kicker with underline,
    44px pictogram, 2× headline (≤3 lines, ≤19 chars/line), 1× blue dek
    (≤2 lines, ≤47 chars/line). Order: CONGRESS (case folder with crimson seal —
    Epstein files subpoenas), BERLIN (euro sign with coins — €3bn Ukraine aid),
@@ -43,11 +43,18 @@ crisp "pixel-editorial" look — everything sits on a strict integer-pixel grid.
    Russia sanctions), CLIMATE (globe with crimson equator — COP31 in Turkey),
    SPORT (tennis ball — Sinner reaches Turin semis), SPACE (flaring sun — X6
    solar eruption), TECH (speech bubble — OpenAI delays GPT-6).
-4. **Ticker strip** — solid ink band with a paper-colored hippo silhouette
+4. **Bottom band** — a tenth, full-height card on the left: OPINION (quill pen
+   with crimson ink drop — an essay against co-signing the Shenzhen pact,
+   tagged "ESSAY P.11"). On the right, a **BY THE NUMBERS** panel: crimson
+   header over four 148×92 boxed figures, each with a hand-plotted mini chart —
+   BRENT CRUDE $58.10 (descending sparkline), NIKKEI 225 51,204 (ascending
+   sparkline), GAZA AID 120 (bar chart, final bar crimson), PERTH HEAT 41.2C
+   (thermometer pegged high beside a sun) — with blue source lines beneath.
+5. **Ticker strip** — solid ink band with a paper-colored hippo silhouette
    (the paper's mascot) and four 1× bulletin items separated by asterisks
    (Anthropic day-two, Dhaka curfew, the Booker Prize, the Pete Rose
    Hall-of-Fame review).
-5. **Folio** — "PAGE 01 - THE WORLD DAILY - FRIDAY, 20 NOVEMBER 2026"
+6. **Folio** — "PAGE 01 - THE WORLD DAILY - FRIDAY, 20 NOVEMBER 2026"
    over closing rules.
 
 ## Editorial rationale
